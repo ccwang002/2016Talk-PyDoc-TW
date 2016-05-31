@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多語系 Sphinx 與 Python 官方文件中文化</title>
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<!-- Twitter Card -->
+	<!-- Ref: https://dev.twitter.com/cards/types/summary-large-image -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@ccwang002">
+	<meta name="twitter:creator" content="@ccwang002">
+	<meta name="twitter:title" content="多語系 Sphinx 與 Python 官方文件中文化">
+	<meta name="twitter:description" content="Python 除了以易讀、易用、易學之外，它也有非常完整的官方文件。然而，因為英文內容，初次使用它時倍感困難，於是有了中文化翻譯計畫。目前翻譯的結果可見 https://docs.python.org.tw/3/ 。本演講將分享本翻譯計畫的整體規劃，以及相關的技術細節，如：Sphinx 文件的多國語言、Transifex 翻譯協作平台整合、文件更新的工作排程等主題。">
+	<meta name="twitter:image" content="https://blog.liang2.tw/2016Talk-PyDoc-TW/pics/pydoctw_frontpage.png">
+
+	<!-- Icon -->
+	<link href="pics/pycontw_logo_32.png" rel="icon" type="image/x-icon" />
+	<!-- CSS Stle -->
+	<link rel="stylesheet" href="lib/shower/themes/styles/screen-16x10.css">
+	<link rel="stylesheet" href="lib/highlight/styles/github.css" type="text/css"/>
+	<style>
+		.caption p {
+			font-size: 0.6em;
+		}
+		.slide.mid h2 {
+			font-size: 110px;
+			font-family: Roboto Light;
+			font-weight: 300;
+			color: white;
+			width: 65%;
+			line-height: 1.25em;
+			text-shadow: 1px 1px 3px black;
+		}
+		.citation pre {
+			text-align: left;
+		}
+		pre.medium {
+			font-size: 0.75em;
+		}
+		pre.medium code {
+			line-height: 1.5em;
+		}
+		pre.small {
+			font-size: 0.5em;
+		}
+		pre.small code {
+			line-height: 1.5em;
+		}
+
+		.sidenote {
+			border: 2px dashed #9e9e9e;
+			position: absolute;
+			padding: 1em;
+			line-height: 1.5em;
+			color: #9e9e9e;
+		}
+		.sidenote p {
+			margin-bottom: 0px;
+		}
+
+	</style>
+</head>
+<body class="shower list">
+	<!-- Header in overview -->
+	<header class="caption">
+		<h1>多語系 Sphinx 與 Python 官方文件中文化</h1>
+		<p><a href="http://liang2.tw">Liang-Bo Wang (亮亮)</a>, 2016-06-03</p>
+	</header>
+
+	<!-- Cover Slide -->
+	<section id="cover" class="slide no-number">
+		<h2 id="talk-header">多語系 Sphinx 與<br>Python 官方文件中文化</h2>
+		<p id="talk-author">
+			By <a href="http://liang2.tw" target="_blank">Liang<sup>2</sup></a> under CC 4.0 BY license
+		</p>
+		<p id="usage-instr">
+			<kbd>Esc</kbd> to overview <br />
+			<kbd>←</kbd> <kbd>→</kbd> to navigate
+		</p>
+		<img src="pics/cover.jpg" class="cover w" alt="">
+		<style>
+			#talk-header,
+			#talk-author {
+				left: 56px;
+			}
+			#talk-header {
+				color: #EEE;
+				text-align: left;
+				font-size: 80px;
+				line-height: 1.3em;
+				text-shadow: -1px 1px 3px #000;
+				bottom: 160px;
+				position: absolute;
+
+			}
+			#talk-author {
+				line-height: 1.2em;
+				text-shadow: -1px 1px 3px #000;
+				left: 65px;
+				bottom: 120px;
+				position: absolute;
+			}
+			#talk-author a {
+				color: #FFFA20;
+			}
+			#cover p {
+				margin: 10px 0 0;
+				color: #FFF;
+				font-size: 32px;
+				opacity: 1;
+			}
+			#usage-instr {
+				position: absolute;
+				text-align: right;
+				right: 30px;
+				bottom: 40px;
+			}
+			#usage-instr kbd {
+				opacity: 0.8;
+				color: #666;
+				background-color: white;
+			}
+			#cover img {
+				opacity: 0.95;
+			}
+			#cover {
+				background: black;
+			}
+		</style>
+	</section>
+
+
+	<!-- Section: Bioconductor -->
+	<section class="slide mid no-number">
+		<h2>Bioconductor</h2>
+		<img src="pics/mid.jpg" class="cover w" alt="">
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">BSgenome</h2>
+	</section>
+
+	<section class="slide tighter">
+		<h2>BSgenome objects</h2>
+		<ul>
+			<li>Store sequence data</li>
+			<li>For human ref hg19, Bioconductor ships BSgenome.Hsapiens.UCSC.hg19</li>
+			<li>Shown as Hsapiens</li>
+		</ul>
+		<pre class="language-r medium"><code>library(BSgenome.Hsapiens.UCSC.hg19)
+Hsapiens
+# Human genome:
+# # organism: Homo sapiens (Human)
+# # provider: UCSC
+# # provider version: hg19
+# # release date: Feb. 2009
+# # release name: Genome Reference Consortium GRCh37
+# # 93 sequences:
+# ...</code></pre>
+	</section>
+
+	<section class="slide">
+		<pre class="language-r">
+<code>chrom_names <- seqnames(Hsapiens)
+head(chrom_names)
+# [1] "chr1" "chr2" "chr3" "chr4" "chr5" "chr6"
+getSeq(Hsapiens, chrom_names[1:2])
+#   A DNAStringSet instance of length 2
+#         width seq
+# [1] 249250621 NNNNNNNNNNN...NNNNNNNNNNN
+# [2] 243199373 NNNNNNNNNNN...NNNNNNNNNNN
+</code>
+		</pre>
+	</section>
+
+	<section class="slide tighter">
+		<p><code>getSeq()</code> accepts GRanges as well.</p>
+		<pre class="language-r">
+<code>getSeq(Hsapiens, txby[["5594"]])
+#   A DNAStringSet instance of length 3
+#      width seq
+# [1] 108024 GCCCCTCCCTCCGCCCGCCC...CAGTAAATAGCAAGTCTTTTTAA
+# [2]  98652 GCCCCTCCCTCCGCCCGCCC...AATTATTTAGAAAGTTACATATA
+# [3]  98487 GCCCCTCCCTCCGCCCGCCC...GATACAGATCTTAAATTTGTCAG
+# Join all exons (UTRs included) of uc002zvn.3
+unlist(getSeq(Hsapiens, exby[["uc002zvn.3"]]))
+#   5915-letter "DNAString" instance
+# seq: GCCCCTCCCTCCGCCC...CAAGTCTTTTTAA</code>
+		</pre>
+	</section>
+
+	<!-- End Slide -->
+	<section id='end' class='slide no-number'>
+		<h2>?</h2>
+		<img src="pics/end.jpg" class="cover w" alt="">
+		<style>
+			#end h2 {
+				position: absolute;
+				left: 52%;
+				top: 42%;
+				color: rgb(228, 74, 33);
+				text-align: right;
+				text-shadow: none;
+				font-size: 120px;
+			}
+		</style>
+	</section>
+
+	<!-- Section: About me and my future school WUSTL -->
+	<section id="about-me" class="slide no-number twocol l60">
+		<div class="left">
+			<h2>About Me</h2>
+			<ul>
+				<li>亮亮 or Liang<sup>2</sup></li>
+				<li>Master student in Bioinformatics, National Taiwan University (NTU BEBI)</li>
+				<li>A PhD student in <a href="http://dbbs.wustl.edu/divprograms/compbio/Pages/default.aspx" target="_blank">WUSTL</a>(WashU) by Fall</li>
+				<li>Happy to talk about R, Python, PyCon TW, anime, bioinfo and my PhD application</li>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="citation">
+			<img class="fill w" src="pics/me.jpg" alt="">
+			<p>(Yap, I know I haven't changed my protrait photo since <a href="https://blog.liang2.tw/2014-pyR-stat/" target="_blank">2014</a>)</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- END OF SLIDE CONTENT -->
+	<p class="badge">
+		<a href="https://github.com/ccwang002/2016Talk-PyDoc-TW/" target="_blank">Sources on GitHub</a>
+	</p>
+	<!--
+	To hide progress bar from entire presentation
+	just remove “progress” element.
+	-->
+	<div class="progress"></div>
+
+	<!-- Library -->
+	<script src="lib/shower/shower.min.js"></script>
+	<script src="lib/highlight/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<!-- Mathjax -->
+	<!-- online Mathjax CDN -->
+	<!--<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+</body>
+</html>
