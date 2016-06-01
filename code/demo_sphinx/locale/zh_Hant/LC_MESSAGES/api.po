@@ -9,18 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Demo project for sphinx-intl 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-01 13:39+0800\n"
+"POT-Creation-Date: 2016-06-01 14:31+0800\n"
 "PO-Revision-Date: 2016-06-01 15:00+0800\n"
 "Last-Translator: liang2 <me@liang2.tw>\n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hant\n"
 "Generated-By: Babel 2.3.4\n"
 
 #: ../../api.rst:2
-msgid "``gettext`` API"
+#, fuzzy
+msgid "GNU ``gettext`` API"
 msgstr "``gettext`` 應用程式介面 (API)"
 
 #: ../../api.rst:4
@@ -30,8 +30,7 @@ msgid ""
 "gettext>`_)."
 msgstr ""
 "節取一部份 :mod:`gettext` 的 docstring 於此（參考\\ `完整的模組說明 "
-"<https://docs.python.org/3.5/library/gettext.html#module-gettext>`_）"
-"。"
+"<https://docs.python.org/3.5/library/gettext.html#module-gettext>`_）。"
 
 #: ../../api.rst:8
 msgid ""
@@ -42,12 +41,11 @@ msgid ""
 "searched for in the environment variables :envvar:`LANGUAGE`, "
 ":envvar:`LC_ALL`, :envvar:`LC_MESSAGES`, and :envvar:`LANG` respectively."
 msgstr ""
-"綁定領域 *domain* 至語系資料夾 *localedir*。更明確地說，:mod:`gettext` "
-"會在以下的 (Unix) 路徑尋找針對指定領域的 binary :file:`.mo` 檔案："
-":file:`localedir/language/LC_MESSAGES/domain.mo`，其中語言 *languages* "
-"的設定會在環境變數：:envvar:`LANGUAGE`、:envvar:`LC_ALL`、"
-":envvar:`LC_MESSAGES` 及 :envvar:`LANG` 中尋找。"
-
+"綁定領域 *domain* 至語系資料夾 *localedir*。更明確地說，:mod:`gettext` 會在以下的 (Unix) "
+"路徑尋找針對指定領域的 binary :file:`.mo` "
+"檔案：:file:`localedir/language/LC_MESSAGES/domain.mo`，其中語言 *languages* "
+"的設定會在環境變數：:envvar:`LANGUAGE`、:envvar:`LC_ALL`、:envvar:`LC_MESSAGES` 及 "
+":envvar:`LANG` 中尋找。"
 
 #: ../../api.rst:14
 msgid ""
@@ -75,9 +73,7 @@ msgid ""
 "The following people contributed code, feedback, design suggestions, "
 "previous implementations, and valuable experience to the creation of this"
 " module:"
-msgstr ""
-"以下的人貢獻了包含程式碼、回饋、設計建議、以前的實作、寶貴的經驗"
-"至這個模組的創作："
+msgstr "以下的人貢獻了包含程式碼、回饋、設計建議、以前的實作、寶貴的經驗至這個模組的創作："
 
 #: ../../api.rst:41
 msgid "Peter Funk"

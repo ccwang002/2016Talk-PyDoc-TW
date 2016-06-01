@@ -9,14 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Demo project for sphinx-intl 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-01 13:39+0800\n"
+"POT-Creation-Date: 2016-06-01 14:31+0800\n"
 "PO-Revision-Date: 2016-06-01 15:00+0800\n"
 "Last-Translator: liang2 <me@liang2.tw>\n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hant\n"
 "Generated-By: Babel 2.3.4\n"
 
 #: ../../intro.rst:2
@@ -28,9 +27,10 @@ msgid "Sphinx"
 msgstr "Sphinx"
 
 #: ../../intro.rst:7
+#, fuzzy
 msgid ""
-"**Sphinx** is an excellent Python documentation denerator. From "
-"|Wikipedia|_ ,"
+"**Sphinx** is an excellent Python documentation generator. From "
+"|Wikipedia|_,"
 msgstr "**Sphinx** 是一個優秀的 Python 文件生成器，根據 |Wikipedia|_\\ ，"
 
 #: ../../intro.rst:9
@@ -38,15 +38,11 @@ msgid ""
 "Sphinx is a documentation generator, heavily used (and written) by the "
 "Python community. It's also written in Python (a programming language); "
 "but used by many other environments."
-msgstr ""
-"Sphinx 是一個經常被 Python 社群使用（並由他們撰寫）的文件生成器。"
-"它亦使用 Python（程式語言）寫成；但其他環境也經常使用它。"
+msgstr "Sphinx 是一個經常被 Python 社群使用（並由他們撰寫）的文件生成器。它亦使用 Python（程式語言）寫成；但其他環境也經常使用它。"
 
 #: ../../intro.rst:16
 msgid ""
 "It use reStructuredText (rst) for as the markup language for documents. "
 "An rst document usually looks like:"
-msgstr ""
-"他使用 reStructuredText (rst) 作為文件的標註語言。"
-"一個 rst 文件通常長得像這樣："
+msgstr "他使用 reStructuredText (rst) 作為文件的標註語言。一個 rst 文件通常長得像這樣："
 
