@@ -21,17 +21,17 @@ msgstr ""
 
 #: ../../intro.rst:2
 msgid "Intro"
-msgstr ""
+msgstr "簡介"
 
 #: ../../intro.rst:5
 msgid "Sphinx"
-msgstr ""
+msgstr "Sphinx"
 
 #: ../../intro.rst:7
 msgid ""
 "**Sphinx** is an excellent Python documentation denerator. From "
 "|Wikipedia|_ ,"
-msgstr ""
+msgstr "**Sphinx** 是一個優秀的 Python 文件生成器，根據 |Wikipedia|_\\ ，"
 
 #: ../../intro.rst:9
 msgid ""
@@ -39,10 +39,14 @@ msgid ""
 "Python community. It's also written in Python (a programming language); "
 "but used by many other environments."
 msgstr ""
+"Sphinx 是一個經常被 Python 社群使用（並由他們撰寫）的文件生成器。"
+"它亦使用 Python（程式語言）寫成；但其他環境也經常使用它。"
 
 #: ../../intro.rst:16
 msgid ""
 "It use reStructuredText (rst) for as the markup language for documents. "
 "An rst document usually looks like:"
 msgstr ""
+"他使用 reStructuredText (rst) 作為文件的標註語言。"
+"一個 rst 文件通常長得像這樣："
 

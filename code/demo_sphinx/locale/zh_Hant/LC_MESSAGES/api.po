@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../api.rst:2
 msgid "``gettext`` API"
-msgstr ""
+msgstr "``gettext`` 應用程式介面 (API)"
 
 #: ../../api.rst:4
 msgid ""
@@ -29,6 +29,9 @@ msgid ""
 "description <https://docs.python.org/3.5/library/gettext.html#module-"
 "gettext>`_)."
 msgstr ""
+"節取一部份 :mod:`gettext` 的 docstring 於此（參考\\ `完整的模組說明 "
+"<https://docs.python.org/3.5/library/gettext.html#module-gettext>`_）"
+"。"
 
 #: ../../api.rst:8
 msgid ""
@@ -39,6 +42,12 @@ msgid ""
 "searched for in the environment variables :envvar:`LANGUAGE`, "
 ":envvar:`LC_ALL`, :envvar:`LC_MESSAGES`, and :envvar:`LANG` respectively."
 msgstr ""
+"綁定領域 *domain* 至語系資料夾 *localedir*。更明確地說，:mod:`gettext` "
+"會在以下的 (Unix) 路徑尋找針對指定領域的 binary :file:`.mo` 檔案："
+":file:`localedir/language/LC_MESSAGES/domain.mo`，其中語言 *languages* "
+"的設定會在環境變數：:envvar:`LANGUAGE`、:envvar:`LC_ALL`、"
+":envvar:`LC_MESSAGES` 及 :envvar:`LANG` 中尋找。"
+
 
 #: ../../api.rst:14
 msgid ""
@@ -55,11 +64,11 @@ msgstr ""
 
 #: ../../api.rst:23
 msgid "Here's an example of typical usage for this API:"
-msgstr ""
+msgstr "這邊有個典型的 API 使用例子："
 
 #: ../../api.rst:36
 msgid "Acknowledgements"
-msgstr ""
+msgstr "致謝"
 
 #: ../../api.rst:38
 msgid ""
@@ -67,42 +76,44 @@ msgid ""
 "previous implementations, and valuable experience to the creation of this"
 " module:"
 msgstr ""
+"以下的人貢獻了包含程式碼、回饋、設計建議、以前的實作、寶貴的經驗"
+"至這個模組的創作："
 
 #: ../../api.rst:41
 msgid "Peter Funk"
-msgstr ""
+msgstr "Peter Funk"
 
 #: ../../api.rst:43
 msgid "James Henstridge"
-msgstr ""
+msgstr "James Henstridge"
 
 #: ../../api.rst:45
 msgid "Juan David Ibáñez Palomar"
-msgstr ""
+msgstr "Juan David Ibáñez Palomar"
 
 #: ../../api.rst:47
 msgid "Marc-André Lemburg"
-msgstr ""
+msgstr "Marc-André Lemburg"
 
 #: ../../api.rst:49
 msgid "Martin von Löwis"
-msgstr ""
+msgstr "Martin von Löwis"
 
 #: ../../api.rst:51
 msgid "François Pinard"
-msgstr ""
+msgstr "François Pinard"
 
 #: ../../api.rst:53
 msgid "Barry Warsaw"
-msgstr ""
+msgstr "Barry Warsaw"
 
 #: ../../api.rst:55
 msgid "Gustavo Niemeyer"
-msgstr ""
+msgstr "Gustavo Niemeyer"
 
 #: ../../api.rst:59
 msgid "Footnotes"
-msgstr ""
+msgstr "註釋"
 
 #: ../../api.rst:60
 msgid ""
