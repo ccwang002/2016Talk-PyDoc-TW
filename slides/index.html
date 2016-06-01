@@ -140,14 +140,6 @@
     2. 目前 Python 官方文件的架構。
     3. 官方文件翻譯計畫。
 
-
-	Sphinx
-	gettext
-		mo
-		po
-	gettext + Python
-	Sphinx + gettext
-
 	-->
 
 	<!-- Section: Sphinx -->
@@ -346,11 +338,19 @@ msgstr "內容："</code></pre>
 		<h2>Sphinx 多語系 123</h2>
 		<ol>
 			<li><code>make gettext</code> 建立 .pot 翻譯模版</li>
-			<li><code>sphinx-intl update -l zh_Hant</code><br>生成或更新已經建立每個 .rst 文件對應的 zh_Hant .po 檔</li>
+			<li><code>sphinx-intl update -l zh_Hant</code><br>生成或更新已經建立每個 .rst 文件對應的 zh_Hant .po 檔<br>（產生 index.po、intro.po、api.po）</li>
 			<li>翻譯，修改 zh_Hant .po 檔</li>
 			<li><code>make -e SPHINXOPTS="-D language='zh_Hant'" html</code><br>生成 zh_Hant HTML 文件</li>
 		</ol>
 		<p>\ 就這麼簡單 /</p>
+	</section>
+
+	<section class="slide tighter">
+		<p>流程示意圖：</p>
+		<div class="citation left">
+			<img src="pics/sphinx_translation_diagram.png" alt="">
+			<p>Ref: Workflow visualization of translations in Sphinx, <a href="http://www.sphinx-doc.org/en/stable/intl.html" target="_blank">Sphinx Internationalization</a></p>
+		</div>
 	</section>
 
 	<section class="slide tighter">
@@ -366,17 +366,19 @@ msgstr "內容："</code></pre>
 	</section>
 
 	<section class="slide twocol l65">
-		<h2>維護翻譯文件的林林總總</h2>
+		<h2>林林總總</h2>
 		<div class="left">
 			<ul>
+				<li>程式碼段落不會出現在 po 檔中</li>
 				<li>目前專案的結構見右</li>
 				<li>把 <code>*.pot</code> 以及 <code>*.po</code> 加到版本控制即可</li>
 				<li>額外調整<a href="https://github.com/ccwang002/2016Talk-PyDoc-TW/commit/3be24b07eba0ec84587d74512d296dbe81e3e91f">翻譯檔路徑的設定</a></li>
-				<li>細節見此 Sphinx 範例的 git commit 記錄：</li>
+				<li>細節見此 Sphinx 範例的 <a href="https://github.com/ccwang002/2016Talk-PyDoc-TW/compare/e294445...7551f30">git commit 記錄</a>：</li>
 					<ul>
-						<li>從零開始的設定</li>
+						<li>修改 conf.py, Makefile</li>
 						<li>文件更新時，翻譯檔如何同步更新</li>
 					</ul>
+				<li><a href="http://www.sphinx-doc.org/en/stable/intl.html#using-transifex-service-for-team-translation">能跟 Transifex 翻譯平台整合</a>，輕鬆編輯 po 檔</li>
 		</div>
 		<div class="right">
 			<pre class="language-text medium"><code>demo_sphinx/
@@ -397,14 +399,10 @@ msgstr "內容："</code></pre>
 		</div>
 	</section>
 
-	<!--
-		sphinx-quickstart
-		make html
-		make gettext
-		sphinx-intl update -l zh_Hant
-		make -e SPHINXOPTS="-D language='zh_Hant'" html
-	-->
-
+	<section class="slide">
+		<img class="fill w" src="pics/sphinx_demo/git_history.png" alt="">
+		<p><code>git checkout e294445</code> 切換不同 commit</p>
+	</section>
 
 
 	<!-- Section: PyDoc -->
@@ -412,6 +410,11 @@ msgstr "內容："</code></pre>
 	$ sphinx-intl build -l zh_Hant
 	$ make -e SPHINXOPTS="-D language='zh_Hant'" html
 	-->
+	<section class="slide mid no-number">
+		<h2>Python <br>官方文件中文化</h2>
+		<img src="pics/mid.jpg" class="cover w" alt="">
+	</section>
+
 	<section class="slide tighter">
 	<pre class="language-bash medium"><code>$ sphinx-build -b html -d build/doctrees -D language=zh_Hant . build/html
 Running Sphinx v1.3.6
@@ -436,8 +439,34 @@ dumping object inventory... done
 build succeeded, 9 warnings.</code></pre>
 	</section>
 
+	<!--
+	從大方向說
+
+	result
+	translation editing
+	live update
+	daily update
+	implementation
+		Django
+		Django-Q
+		blog post
+	detail
+		sphinx translation itself
+		zh_TW or zh_Hant
+		Jinja2 template autobuildi18n=1
+		fix jQuery bug
+	-->
+
 
 	<!-- Section: Translation -->
+	<!--
+		timeline
+		people
+		money
+			1K+		server maintenance
+			10K+	regular translation meetup
+			100K+	outsource translation
+	-->
 	<section class="slide black" id="running-into-hole">
 		<div class="citation">
 			<video loop autoplay class="cover w">
