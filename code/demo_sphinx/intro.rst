@@ -4,7 +4,7 @@ Intro
 Sphinx
 ------
 
-**Sphinx** is an excellent Python documentation denerator. From |Wikipedia|_ ,
+**Sphinx** is an excellent Python documentation generator. From |Wikipedia|_,
 
     Sphinx is a documentation generator, heavily used (and written) by the
     Python community. It's also written in Python (a programming language); but

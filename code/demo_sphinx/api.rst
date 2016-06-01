@@ -1,5 +1,5 @@
-``gettext`` API
-===============
+GNU ``gettext`` API
+===================
 
 Extract some docstring of :mod:`gettext` here (see the `full module description <https://docs.python.org/3.5/library/gettext.html#module-gettext>`_).
 
