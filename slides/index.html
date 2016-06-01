@@ -416,27 +416,63 @@ msgstr "內容："</code></pre>
 	</section>
 
 	<section class="slide tighter">
-	<pre class="language-bash medium"><code>$ sphinx-build -b html -d build/doctrees -D language=zh_Hant . build/html
-Running Sphinx v1.3.6
-loading translations [zh_Hant]... done
-loading pickled environment... done
-building [mo]: targets for 463 po files that are out of date
-writing output... [100%] locale/zh_Hant/LC_MESSAGES/c-api/typeobj.mo
-building [html]: targets for 463 source files that are out of date
-updating environment: [config changed] 463 added, 0 changed, 0 removed
-reading sources... [100%] whatsnew/index
-pickling environment... done
-checking consistency... done
-preparing documents... done
-writing output... [100%] whatsnew/index
-generating indices... genindex py-modindex
-writing additional pages... index download search opensearch
-copying images... [100%] using/win_installer.png
-copying static files... done
-copying extra files... done
-dumping search index in English (code: en) ... done
-dumping object inventory... done
-build succeeded, 9 warnings.</code></pre>
+		<img class="fill w" src="pics/pydoctw_frontpage.png" alt="">
+		<p align="center"><a href="https://docs.python.org.tw/3/index.html">https://docs.python.org.tw/3/index.html</a></p>
+	</section>
+
+	<section class="slide tighter">
+		<img class="fill w" src="pics/pydoctw_tutorial_chp3.png" alt="">
+		<p>「原文」連結連回官方英文版同標題處</p>
+	</section>
+
+	<section class="slide">
+		<h2>Python 官方文件中文化</h2>
+		<ul>
+			<li>聽完 COSCUP 2015 <a href="http://www.slideshare.net/bobby3302/w3c-51661297">BobbyTung</a> 的演講有感而發</li>
+			<li>在 Python 討論區上，經常有人問初學應該如何入門</li>
+			<li>其實不看書，<a href="https://docs.python.org/3/tutorial/index.html">官網的教學</a>就寫得很清楚，其餘的文件也非常完整</li>
+			<li>「但官網都是寫英文……」「感覺很複雜」做一個讀官網文件的<a href="https://blog.liang2.tw/2016Talk-Pydoc/">教學</a>？！</li>
+			<li>2015 下半年研究與構想翻譯的架構（= 耍廢）；<br>
+				2015.12 基本架構；2016.02 過年完成自動線上文件編輯與更新</li>
+			<li>所有資訊都能在<a href="https://github.com/python-doc-tw/python-doc-tw">專案入口 GitHub</a> 找到</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>加入中文化翻譯 123</h2>
+		<ol>
+			<li>註冊 <a href="https://www.transifex.com/">Transifex</a> 帳號，加入 <a href="https://github.com/python-doc-tw/python-doc-tw">python-35-tw 翻譯專案</a></li>
+			<li>選擇想要翻譯的頁面，例如 <a href="https://docs.python.org.tw/3/tutorial/introduction.html" target="_blank">https://docs.python.org.tw/3/tutorial/introduction.html</a> 即為 <code>tutorial--controlflow</code></li>
+			<li>開始翻譯，參考<a href="https://github.com/python-doc-tw/python-doc-tw/wiki/Translation-guideline" target="_blank">翻譯守則</a>的規定，注意 rst 語法</li>
+			<li>點擊翻譯頁面側邊欄的 "Update Translation" 連結</li>
+			<li>看一下 <a href="https://docs.python.org.tw/_build/">doc page build 排程</a> 是否順利結束</li>
+			<li>重整翻譯頁面確認結果</li>
+		</ol>
+	</section>
+
+	<section class="slide no-number">
+		<img class="cover" src="pics/pydoctw_transifex.png" alt="">
+	</section>
+
+	<section class="slide">
+		<p>點擊 "Update Translation" 連結，查看 <a href="https://docs.python.org.tw/_build/">doc page build 排程</a></p>
+		<img class="fill w" src="pics/pydoctw_update.png" alt="">
+		<p>工作完成後，可以看排程實際執行了哪些指令，或 build doc 有沒有錯誤。</p>
+	</section>
+
+	<section class="slide">
+		<img class="cover h" src="pics/pydoctw_task.png" alt="">
+	</section>
+
+	<section class="slide">
+		<h2>檢查翻譯成果</h2>
+		<img class="fill w" src="pics/pydoctw_result.png" alt="">
+		<p>僅參與翻譯的話，<mark>一行指令都不用下</mark></p>
+		<p>對想要離線使用的人，參考 <a href="https://github.com/python-doc-tw/python-doc-tw/wiki/How-to-build-the-doc-locally">wiki</a> 說明（跟前半場 talk 操作類似），新的翻譯每天都會自動加回 <a href="https://github.com/python-doc-tw/cpython-tw">git repo</a> 中。</p>
+	</section>
+
+	<section class="slide">
+		<img class="cover h" src="pics/pydoctw_gitrepo.png" alt="">
 	</section>
 
 	<!--
@@ -466,7 +502,22 @@ build succeeded, 9 warnings.</code></pre>
 			1K+		server maintenance
 			10K+	regular translation meetup
 			100K+	outsource translation
+
+		category		strings		words
+		tutorial		0.8K		25K
+		install, using	0.8K		15K
+		howto			  2K		60K
+		reference		 13K		38K
+		library (all)	 25K	   513K
+		TOTAL			 42K	   661K
+
+		多魔戒三部曲 (473K) 十萬字
+		差不多冰與火之歌前兩部 (624K)
+
+		using pocount from translation-toolkit
+		http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/pocount.html
 	-->
+	<!--
 	<section class="slide black" id="running-into-hole">
 		<div class="citation">
 			<video loop autoplay class="cover w">
@@ -486,6 +537,7 @@ build succeeded, 9 warnings.</code></pre>
 			}
 		</style>
 	</section>
+	-->
 
 	<!-- End Slide -->
 	<section id='end' class='slide no-number'>
