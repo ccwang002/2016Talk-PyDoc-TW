@@ -62,6 +62,13 @@
 		.grey {
 			color: grey;
 		}
+
+		.little.witch .citation > p {
+			position: absolute;
+			bottom: 1em;
+			right: 1em;
+			color: white;
+		}
 	</style>
 </head>
 <body class="shower list">
@@ -513,7 +520,7 @@ msgstr "內容："</code></pre>
 		</ul>
 	</section>
 
-	<section class="slide black" id="running-into-hole">
+	<section class="slide black little witch">
 		<div class="citation">
 			<video loop autoplay class="cover w">
 				<source src="pics/running_to_hole.mp4" type="video/mp4">
@@ -523,14 +530,6 @@ msgstr "內容："</code></pre>
 			</video>
 			<p>Modified from <a href="http://littlewitchacademia.jp/">リトルウィッチアカデミア</a> (Little Witch Academia), 2013</p>
 		</div>
-		<style>
-			#running-into-hole .citation > p {
-				position: absolute;
-				bottom: 1em;
-				right: 1em;
-				color: white;
-			}
-		</style>
 	</section>
 
 	<section class="slide">
@@ -554,49 +553,147 @@ msgstr "內容："</code></pre>
 
 	<section class="slide">
 		<h2>翻譯文件此坑有多大？</h2>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>類型</th>
+					<th>翻譯條目數</th>
+					<th>字數</th>
+					<th>內容</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="col"><a href="https://docs.python.org.tw/3/tutorial/index.html">tutorial/*</a></th>
+				<td>0.8k</td>
+				<td>25k</td>
+				<td>給初學者的教學</td>
+			</tr>
+			<tr>
+				<th scope="col"><a href="https://docs.python.org.tw/3/installing/index.html">installing/*</a>, <a href="https://docs.python.org.tw/3/using/index.html">using/*</a></th>
+				<td>0.8k</td>
+				<td>15k</td>
+				<td>在各系統上安裝與使用</td>
+			</tr>
+			<tr>
+				<th scope="col"><a href="https://docs.python.org.tw/3/howto/index.html">howto/*</a></th>
+				<td>2k</td>
+				<td>60k</td>
+				<td>針對套件的詳細教學</td>
+			</tr>
+			<tr>
+				<th scope="col"><a href="https://docs.python.org.tw/3/reference/index.html">reference/*</a></th>
+				<td>13k</td>
+				<td>38k</td>
+				<td>Python 語言定義</td>
+			</tr>
+			<tr>
+				<th scope="col"><a href="https://docs.python.org.tw/3/library/index.html">library/*</a></th>
+				<td>25k</td>
+				<td>513k</td>
+				<td>標準函式庫 (stdlib)</td>
+			</tr>
+			<tr>
+				<th scope="col">TOTAL</th>
+				<td>42k</td>
+				<td><strong>661k</strong></td>
+				<td></td>
+			</tr>
+		</table>
+		<p class="note">(word count using <a href="http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/pocount.html">pocount</a> from <a href="https://pypi.python.org/pypi/translate-toolkit/">translation-toolkit</a>)</p>
+	</section>
+
+	<section id="translation-word-count" class="slide tighter twocol">
+		<div class="left">
+			<div class="citation">
+				<p>Ref: <a href="https://amzn.com/0345538374">Amazon</a></p>
+				<img class="fill w" src="pics/the_lord_of_the_rings_bookset.jpg" alt="">
+			</div>
+			<p>魔戒三部曲 + 前傳 (= 560k)</p>
+		</div>
+		<div class="right next">
+			<div class="citation">
+				<p>Ref: <a href="https://amzn.com/0345535529">Amazon</a></p>
+				<img class="fill w" src="pics/a_song_of_ice_and_fire_bookset.jpg" alt="">
+			</div>
+			<p>冰與火之歌前兩部 (= 624k)</p>
+		</div>
+		<style>
+			#translation-word-count .left {
+				width: 45%;
+			}
+			#translation-word-count .right {
+				padding-top: 1.5em;
+				width: 55%;
+			}
+			#translation-word-count > .left > p,
+			#translation-word-count > .right > p {
+				text-align: center;
+			}
+		</style>
+	</section>
+
+	<section class="slide black little witch">
+		<div class="citation">
+			<img class="cover" src="pics/hmm.png" alt="">
+			<p>Ref <a href="http://littlewitchacademia.jp/">リトルウィッチアカデミア 魔法仕掛けのパレード</a> (Little Witch Academia: The Enchanted Parade), 2015</p>
+		</div>
 	</section>
 
 	<section class="slide">
-		<h2>用錢填坑？</h2>
+		<h2>翻譯時程</h2>
+		<ul>
+			<li>現在：準備畢業寫論文 T____T</li>
+			<li>畢業後、暑假、開學前：<mark>完成 tutorial</mark></li>
+			<li>依表格順序到 howto：沒有明確的時間表</li>
+			<li>library/* 大坑：可能不做、可能只做熱門的一部份</li>
+		</ul>
+		<p class="note">本來是要帥氣地在 PyCon TW 宣布 tutorial 完成翻譯的，<br>但申請學校 + 畢業 + PyCon TW 議程長負擔真的有點多……</p>
 	</section>
 
-	<!--
-		timeline
-		people
-		money
-			1K+		server maintenance
-			10K+	regular translation meetup
-			100K+	outsource translation
+	<section class="slide">
+		<h2>贊助？</h2>
+		<p>Tutorial 以外的內容，除了參與翻譯外，也歡迎各位贊助</p>
+		<ul>
+			<li>一千：維護主機</li>
+			<li>一萬：定期舉辦翻譯聚會 or 我能有穩定的進度</li>
+			<li>十萬：將部份翻譯工作外包</li>
+			<li>五十萬：絕大多數的翻譯能在一年內完成</li>
+			<li>Patreon? flyingV?</li>
+		</ul>
+		<p>如果贊助成真，收集到的資金將由第三方統籌並公開收支（PyCon TW?）</p>
+	</section>
 
-		category		strings		words
-		tutorial		0.8K		25K
-		install, using	0.8K		15K
-		howto			  2K		60K
-		reference		 13K		38K
-		library (all)	 25K	   513K
-		TOTAL			 42K	   661K
-
-		多魔戒三部曲 (473K) 十萬字
-		差不多冰與火之歌前兩部 (624K)
-
-		using pocount from translation-toolkit
-		http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/pocount.html
-	-->
-
-
-	<!-- End Slide -->
-	<section id='end' class='slide no-number'>
-		<h2>?</h2>
-		<img src="pics/end.jpg" class="cover w" alt="">
+	<section id="summary" class="slide">
+		<h2>總結</h2>
+		<ul>
+			<li>Sphinx 多語系：sphinx-intl、gettext</li>
+			<li>Python 官方文件中文化：Transifex、不敲程式即能加入翻譯</li>
+			<li>需要更多人加入翻譯與校對</li>
+			<li>歡迎贊助！</li>
+		</ul>
+		<p class="note">歡迎<a href="https://github.com/python-doc-tw/python-doc-tw">加入專案</a>或來信至 me@liang2.tw<br>
+			<span class="note">PGP fingerprint <code>6ECD C5B8 235C D44D 2471 866E 30A4 5011 B233 544E</code></span></p>
 		<style>
-			#end h2 {
+			#summary .note {
+				font-size: 0.8em;
+			}
+		</style>
+	</section>
+
+	<section id="goodbye-gift" class="slide black little witch">
+		<div class="citation">
+			<img class="cover" src="pics/goodbye_gift.png" alt="">
+			<p>Ref <a href="http://littlewitchacademia.jp/">リトルウィッチアカデミア 魔法仕掛けのパレード</a> (Little Witch Academia: The Enchanted Parade), 2015</p>
+		</div>
+		<p>My goodbye gift before leaving Taiwan :)</p>
+		<style>
+			#goodbye-gift > p{
+				color: rgba(255, 252, 0, 0.54);
+				width: 9em;
 				position: absolute;
-				left: 52%;
-				top: 42%;
-				color: #4CAF50;
-				text-align: right;
-				text-shadow: none;
-				font-size: 120px;
+				top: 3em;
+				left: 1em;
+				line-height: 1.5em;
 			}
 		</style>
 	</section>
@@ -619,6 +716,24 @@ msgstr "內容："</code></pre>
 			</div>
 		</div>
 	</section>
+
+	<!-- End Slide -->
+	<section id='end' class='slide no-number'>
+		<h2>?</h2>
+		<img src="pics/end.jpg" class="cover w" alt="">
+		<style>
+			#end h2 {
+				position: absolute;
+				left: 52%;
+				top: 42%;
+				color: #4CAF50;
+				text-align: right;
+				text-shadow: none;
+				font-size: 120px;
+			}
+		</style>
+	</section>
+
 
 	<!-- END OF SLIDE CONTENT -->
 	<p class="badge">
