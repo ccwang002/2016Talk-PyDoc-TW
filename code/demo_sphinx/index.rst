@@ -6,11 +6,23 @@
 Welcome to Demo project for sphinx-intl's documentation!
 ========================================================
 
+We will use this to demo the usage of `sphinx-intl`_. Make sure you make installed all the required packages:
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+Then try to write some more pages.
+
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   intro
+   api
+
+.. _sphinx-intl: https://github.com/sphinx-doc/sphinx-intl
 
 
 Indices and tables
