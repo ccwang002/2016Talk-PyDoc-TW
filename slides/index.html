@@ -59,7 +59,9 @@
 		.sidenote p {
 			margin-bottom: 0px;
 		}
-
+		.grey {
+			color: grey;
+		}
 	</style>
 </head>
 <body class="shower list">
@@ -139,82 +141,219 @@
     3. 官方文件翻譯計畫。
 
 
-	gettext
-	gettext + Python
 	Sphinx
+	gettext
+		mo
+		po
+	gettext + Python
 	Sphinx + gettext
-
-	坑 魔法師 恐龍
 
 	-->
 
-	<!-- Section: Bioconductor -->
+	<!-- Sphinx -->
 	<section class="slide mid no-number">
-		<h2>Bioconductor</h2>
+		<h2>Sphinx</h2>
 		<img src="pics/mid.jpg" class="cover w" alt="">
 	</section>
-
 	<section class="slide">
-		<h2 class="shout">BSgenome</h2>
-	</section>
-
-	<section class="slide tighter">
-		<h2>BSgenome objects</h2>
+		<h2>Sphinx 文件產生工具</h2>
 		<ul>
-			<li>Store sequence data</li>
-			<li>For human ref hg19, Bioconductor ships BSgenome.Hsapiens.UCSC.hg19</li>
-			<li>Shown as Hsapiens</li>
+			<li>當初為了新的<a href="https://docs.python.org/3/" target="_blank">Python 官方文件</a>而設計出的工具，<a href="http://www.sphinx-doc.org/en/stable/" target="_blank">Sphinx</a></li>
+			<li>文件使用 <a href="https://en.wikipedia.org/wiki/ReStructuredText">reStructuredText</a> (rst) 標記語言撰寫</li>
+			<ul>
+				<li>語法較常見的 <a href="http://markdown.tw/">Markdown</a> 複雜</li>
+				<li>但定義嚴謹<del class="grey">（不會出現 CommonRST）</del></li>
+				<li>支援一些複雜的格式（如：文本內參照、自訂特定格式）</li>
+			</ul>
+			<li>經 Sphinx 擴充，適合撰寫程式文件</li>
+			<li>文件能輸出不同格式：PDF (LaTeX)、ePub、man page、HTML 等</li>
 		</ul>
-		<pre class="language-r medium"><code>library(BSgenome.Hsapiens.UCSC.hg19)
-Hsapiens
-# Human genome:
-# # organism: Homo sapiens (Human)
-# # provider: UCSC
-# # provider version: hg19
-# # release date: Feb. 2009
-# # release name: Genome Reference Consortium GRCh37
-# # 93 sequences:
-# ...</code></pre>
 	</section>
 
-	<section class="slide">
-		<pre class="language-r">
-<code>chrom_names <- seqnames(Hsapiens)
-head(chrom_names)
-# [1] "chr1" "chr2" "chr3" "chr4" "chr5" "chr6"
-getSeq(Hsapiens, chrom_names[1:2])
-#   A DNAStringSet instance of length 2
-#         width seq
-# [1] 249250621 NNNNNNNNNNN...NNNNNNNNNNN
-# [2] 243199373 NNNNNNNNNNN...NNNNNNNNNNN
+	<section class="slide twocol l65">
+		<h2>製作一個 Sphinx 文件</h2>
+		<div class="left">
+		<ul>
+			<li>步驟根據 <a href="http://www.sphinx-doc.org/en/stable/tutorial.html">First Steps with Sphinx</a></li>
+			<li><code>sphinx-quickstart</code> 建立 Sphinx 文件結構</li>
+			<li>修改首頁 <code>index.rst</code> 或增加新的 rst 頁面</li>
+			<li><code>make html</code> 輸出 HTML 文件</li>
+			<li>Sphinx 設定由 <code>conf.py</code> 修改</li>
+			<li>參考<a href="https://github.com/ccwang002/2016Talk-PyDoc-TW/tree/master/code">本次示範用 Sphinx 專案</a></li>
+		</ul>
+		</div>
+		<div class="right">
+		<pre class="language-text"><code>demo_sphinx
+├── _build/
+├── Makefile
+├── make.bat
+├── conf.py
+├── <mark>index.rst</mark>
+├── <mark>intro.rst</mark>
+└── <mark>api.rst</mark></code></pre>
+		</div>
+	</section>
+
+	<section class="slide tighter twocol l80">
+		<div class="left">
+			<pre class="language-rst medium">
+				<code>Welcome to Demo project for sphinx-intl's documentation!
+========================================================
+
+We will use this to demo the usage of `sphinx-intl`_.
+Make sure you make installed all the required packages:
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+Then try to write some more pages.
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   <mark>intro</mark>
+   <mark>api</mark></code>
+			</pre>
+		</div>
+		<div class="right">
+			<p><code>index.rst</code></p>
+		</div>
+	</section>
+
+	<section class="slide tighter twocol l80">
+		<div class="left">
+			<pre class="language-rst medium">
+				<code>Intro
+=====
+
+Sphinx
+------
+
+**Sphinx** is an excellent Python documentation generator. From |Wikipedia|_,
+
+    Sphinx is a documentation generator, heavily used (and written) by the
+    Python community. It's also written in Python (a programming language); but
+    used by many other environments.
+
+.. |Wikipedia| replace:: *Wikipedia*
+.. _Wikipedia: https://en.wikipedia.org/wiki/Sphinx_%28documentation_generator%29
+
+It use reStructuredText (rst) for as the markup language for documents. An
+rst document usually looks like:</code>
+			</pre>
+		</div>
+		<div class="right">
+			<p><code>intro.rst</code></p>
+		</div>
+	</section>
+
+	<section class="slide tighter twocol l80">
+		<div class="left">
+			<pre class="language-rst medium">
+				<code>GNU ``gettext`` API
+===================
+
+Extract some docstring of <mark>:mod:`gettext`</mark> here (see the `full module description`_).
+
+<mark>.. function:: gettext(message)</mark>
+
+   Return the localized translation of *message*, based on the current global
+   domain, language, and locale directory.  This function is usually aliased as
+   <mark>:func:`_`</mark> in the local namespace (see examples below).
+
+.. _full module description: https://docs.python.org/3.5/library/gettext.html
+
+Here's an example of typical usage for this API:
+
+.. code-block:: python3
+
+   import gettext
+   gettext.bindtextdomain('myapplication', '/path/to/my/language/directory')
+   # ...
 </code>
-		</pre>
+			</pre>
+		</div>
+		<div class="right">
+			<p><code>api.rst</code></p>
+		</div>
 	</section>
 
 	<section class="slide tighter">
-		<p><code>getSeq()</code> accepts GRanges as well.</p>
-		<pre class="language-r">
-<code>getSeq(Hsapiens, txby[["5594"]])
-#   A DNAStringSet instance of length 3
-#      width seq
-# [1] 108024 GCCCCTCCCTCCGCCCGCCC...CAGTAAATAGCAAGTCTTTTTAA
-# [2]  98652 GCCCCTCCCTCCGCCCGCCC...AATTATTTAGAAAGTTACATATA
-# [3]  98487 GCCCCTCCCTCCGCCCGCCC...GATACAGATCTTAAATTTGTCAG
-# Join all exons (UTRs included) of uc002zvn.3
-unlist(getSeq(Hsapiens, exby[["uc002zvn.3"]]))
-#   5915-letter "DNAString" instance
-# seq: GCCCCTCCCTCCGCCC...CAAGTCTTTTTAA</code>
-		</pre>
+		<img class="fill w" src="pics/sphinx_demo/en_frontpage.png" alt="">
 	</section>
 
-	<section class="slide black">
-		<video loop autoplay class="cover w">
-			<source src="pics/running_to_hole.mp4" type="video/mp4">
-			Your browser doesn't support HTML5 video in WebM with VP8
-			or MP4 with H.264. You can still download the
-			<a href="pics/running_to_hole.mp4">screencast</a> and view it locally.
-		</video>
+	<section class="slide tighter">
+		<img class="fill w" src="pics/sphinx_demo/en_intro.png" alt="">
+	</section>
 
+	<section class="slide tighter">
+		<img class="fill w" src="pics/sphinx_demo/en_api.png" alt="">
+	</section>
+
+	<!--
+		sphinx-quickstart
+		make html
+		make gettext
+		sphinx-intl update -l zh_Hant
+		make -e SPHINXOPTS="-D language='zh_Hant'" html
+	-->
+
+	<section class="slide">
+		<h2 class="shout">Shout</h2>
+	</section>
+
+	<!-- Section: PyDoc -->
+	<!--
+	$ sphinx-intl build -l zh_Hant
+	$ make -e SPHINXOPTS="-D language='zh_Hant'" html
+	-->
+	<section class="slide tighter">
+	<pre class="language-bash medium"><code>$ sphinx-build -b html -d build/doctrees -D language=zh_Hant . build/html
+Running Sphinx v1.3.6
+loading translations [zh_Hant]... done
+loading pickled environment... done
+building [mo]: targets for 463 po files that are out of date
+writing output... [100%] locale/zh_Hant/LC_MESSAGES/c-api/typeobj.mo
+building [html]: targets for 463 source files that are out of date
+updating environment: [config changed] 463 added, 0 changed, 0 removed
+reading sources... [100%] whatsnew/index
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [100%] whatsnew/index
+generating indices... genindex py-modindex
+writing additional pages... index download search opensearch
+copying images... [100%] using/win_installer.png
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded, 9 warnings.</code></pre>
+	</section>
+
+
+	<!-- Section: Translation -->
+	<section class="slide black" id="running-into-hole">
+		<div class="citation">
+			<video loop autoplay class="cover w">
+				<source src="pics/running_to_hole.mp4" type="video/mp4">
+				Your browser doesn't support HTML5 video in WebM with VP8
+				or MP4 with H.264. You can still download the
+				<a href="pics/running_to_hole.mp4">screencast</a> and view it locally.
+			</video>
+			<p>Modified from <a href="http://littlewitchacademia.jp/">リトルウィッチアカデミア</a> (Little Witch Academia), 2013</p>
+		</div>
+		<style>
+			#running-into-hole .citation > p {
+				position: absolute;
+				bottom: 1em;
+				right: 1em;
+				color: white;
+			}
+		</style>
 	</section>
 
 	<!-- End Slide -->
@@ -226,7 +365,7 @@ unlist(getSeq(Hsapiens, exby[["uc002zvn.3"]]))
 				position: absolute;
 				left: 52%;
 				top: 42%;
-				color: rgb(228, 74, 33);
+				color: #4CAF50;
 				text-align: right;
 				text-shadow: none;
 				font-size: 120px;
