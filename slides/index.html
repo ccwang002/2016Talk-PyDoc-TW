@@ -150,11 +150,12 @@
 
 	-->
 
-	<!-- Sphinx -->
+	<!-- Section: Sphinx -->
 	<section class="slide mid no-number">
-		<h2>Sphinx</h2>
+		<h2>多語系 Sphinx</h2>
 		<img src="pics/mid.jpg" class="cover w" alt="">
 	</section>
+
 	<section class="slide">
 		<h2>Sphinx 文件產生工具</h2>
 		<ul>
@@ -293,6 +294,109 @@ Here's an example of typical usage for this API:
 		<img class="fill w" src="pics/sphinx_demo/en_api.png" alt="">
 	</section>
 
+	<!-- Sphinx i18n -->
+	<section class="slide">
+		<h2 class="shout">i18n</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Sphinx 多語系 (i18n)</h2>
+		<ul>
+			<li>如果我的文件需要中、英、日文……</li>
+			<li>建立 3 個獨立專案，管理不易</li>
+			<li>設定一個 source language（例：英文），其餘語言會建立翻譯的對照檔。</li>
+			<li>建立中文的文件時，就會根據對照檔把英文文件內容，轉換成中文。</li>
+			<li>許多跟翻譯相關的功能，已經整合到 <a href="https://github.com/sphinx-doc/sphinx-intl" target="_blank">sphinx-intl</a> 套件中</li>
+			<li>詳細的流程參考 <a href="http://www.sphinx-doc.org/en/stable/intl.html" target="_blank">Sphinx Internationalization</a></li>
+		</ul>
+	</section>
+
+	<section class="slide twocol l65">
+		<h2>建立翻譯對照檔：gettext</h2>
+		<div class="left">
+			<ul>
+				<li><a href="https://en.wikipedia.org/wiki/Gettext">GNU gettext</a> 是一套發展已久的 i18n 系統，許多程式語言均使用它實作多語系字串轉換。</li>
+				<ol>
+					<li>從程式碼、文本中取出需要翻譯的文字段落，生成 <code>.pot</code> 翻譯字串模版</li>
+					<li>根據模版，建立各語言的翻譯檔 <code>.po</code>，<br>翻譯 = 修改此檔</li>
+					<li>使用時，從 <code>.po</code> 建立 <code>.mo</code> binary 格式<br>加快翻譯速度</li>
+				</ol>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="citation">
+				<img class="fill w" src="pics/gettext_workflow_diagram.svg" alt="">
+				<p>Ref: <a href="https://commons.wikimedia.org/wiki/File:Gettext.svg">Typical gettext workflow</a> on Wikipedia<br>by Quicksilver (CC BY-SA 3.0)</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>po 檔長怎樣</h2>
+<pre class="language-text"><code>#: ../../index.rst:15
+<mark>msgid</mark> "Then try to write some more pages."
+<mark>msgstr</mark> "接著試著撰寫一些頁面。"
+
+#: ../../index.rst:17
+msgid "Contents:"
+msgstr "內容："</code></pre>
+	</section>
+
+	<section class="slide">
+		<h2>Sphinx 多語系 123</h2>
+		<ol>
+			<li><code>make gettext</code> 建立 .pot 翻譯模版</li>
+			<li><code>sphinx-intl update -l zh_Hant</code><br>生成或更新已經建立每個 .rst 文件對應的 zh_Hant .po 檔</li>
+			<li>翻譯，修改 zh_Hant .po 檔</li>
+			<li><code>make -e SPHINXOPTS="-D language='zh_Hant'" html</code><br>生成 zh_Hant HTML 文件</li>
+		</ol>
+		<p>\ 就這麼簡單 /</p>
+	</section>
+
+	<section class="slide tighter">
+		<img class="fill w" src="pics/sphinx_demo/zh_frontpage.png" alt="">
+	</section>
+
+	<section class="slide tighter">
+		<img class="fill w" src="pics/sphinx_demo/zh_intro.png" alt="">
+	</section>
+
+	<section class="slide tighter">
+		<img class="fill w" src="pics/sphinx_demo/zh_api.png" alt="">
+	</section>
+
+	<section class="slide twocol l65">
+		<h2>維護翻譯文件的林林總總</h2>
+		<div class="left">
+			<ul>
+				<li>目前專案的結構見右</li>
+				<li>把 <code>*.pot</code> 以及 <code>*.po</code> 加到版本控制即可</li>
+				<li>額外調整<a href="https://github.com/ccwang002/2016Talk-PyDoc-TW/commit/3be24b07eba0ec84587d74512d296dbe81e3e91f">翻譯檔路徑的設定</a></li>
+				<li>細節見此 Sphinx 範例的 git commit 記錄：</li>
+					<ul>
+						<li>從零開始的設定</li>
+						<li>文件更新時，翻譯檔如何同步更新</li>
+					</ul>
+		</div>
+		<div class="right">
+			<pre class="language-text medium"><code>demo_sphinx/
+├── _build/
+│   ├── doctrees/
+│   └── html/
+├── Makefile
+├── make.bat
+├── conf.py
+├── *.rst
+└── locale/
+    ├── pot/
+    │   └── *.pot
+    └── zh_Hant/
+        └── LC_MESSAGES/
+            ├── *.mo
+            └── *.po</code></pre>
+		</div>
+	</section>
+
 	<!--
 		sphinx-quickstart
 		make html
@@ -301,9 +405,7 @@ Here's an example of typical usage for this API:
 		make -e SPHINXOPTS="-D language='zh_Hant'" html
 	-->
 
-	<section class="slide">
-		<h2 class="shout">Shout</h2>
-	</section>
+
 
 	<!-- Section: PyDoc -->
 	<!--
@@ -413,3 +515,4 @@ build succeeded, 9 warnings.</code></pre>
 	<!--<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
+			</ul>
