@@ -134,14 +134,6 @@
 	</section>
 
 
-	<!-- TOC
-
-    1. Sphinx 文件結合 gettext 多語系的架構。
-    2. 目前 Python 官方文件的架構。
-    3. 官方文件翻譯計畫。
-
-	-->
-
 	<!-- Section: Sphinx -->
 	<section class="slide mid no-number">
 		<h2>多語系 Sphinx</h2>
@@ -288,7 +280,7 @@ Here's an example of typical usage for this API:
 
 	<!-- Sphinx i18n -->
 	<section class="slide">
-		<h2 class="shout">i18n</h2>
+		<h2 class="shout">多語系 (i18n)</h2>
 	</section>
 
 	<section class="slide">
@@ -475,17 +467,28 @@ msgstr "內容："</code></pre>
 		<img class="cover h" src="pics/pydoctw_gitrepo.png" alt="">
 	</section>
 
-	<!--
-	從大方向說
+	<section class="slide">
+		<h2>自動更新 Sphinx 文件排程實作</h2>
+		<ul>
+			<li>透過 sphinx-intl 將專案上傳至 Transifex</li>
+			<li>使用 <a href="https://www.djangoproject.com/">Django</a></li>
+			<li>工作排程使用 <a href="http://django-q.readthedocs.io/en/latest/">Django-Q</a>。Django-Q 介紹參考在 <a href="https://blog.liang2.tw/2016Talk-Django-Q/">Taipei.py 投影片</a></li>
+			<li>部署於 AWS EC2 t2.nano，所有部署設定見部落格文章 <a href="https://blog.liang2.tw/posts/2016/02/pydoctw-server/">[1]</a> <a href="https://blog.liang2.tw/posts/2016/02/pydoctw-https/">[2]</a></li>
+		</ul>
+		<p>盡量讓環境的建立都有文件，可以<del class="grey">推坑</del>傳承。<del class="grey">避免一年後的自己都搞不懂</del></p>
+	</section>
 
-	result
-	translation editing
-	live update
-	daily update
-	implementation
-		Django
-		Django-Q
-		blog post
+	<section class="slide">
+		<h2>待改善之處</h2>
+		<ul>
+			<li>讓 UI 更友善，例如更新文件時多一些提示，不需要開 js console</li>
+			<img class="fill w" src="pics/pydoctw_jsconsole.png" alt="">
+			<li>Sphinx 本身的字串翻譯</li>
+			<li>提供可下載的 HTML 壓縮文件</li>
+		</ul>
+	</section>
+
+	<!--
 	detail
 		sphinx translation itself
 		zh_TW or zh_Hant
@@ -493,8 +496,70 @@ msgstr "內容："</code></pre>
 		fix jQuery bug
 	-->
 
-
 	<!-- Section: Translation -->
+	<section class="slide">
+		<h2 class="shout">翻譯現狀與挑戰</h2>
+	</section>
+
+	<section class="slide">
+		<h2>翻譯現狀</h2>
+		<ul>
+			<li>沒有大宣傳，透過定期 Sprint 讓大家自由翻譯</li>
+			<li>了解哪些章節比較多人有興趣翻譯；翻譯流程順不順暢</li>
+			<li><a href="https://github.com/python-doc-tw/python-doc-tw/wiki/Translation-guideline">翻譯守則</a>越來越穩定</li>
+			<li>能即時看到翻譯結果，比較有成就感</li>
+			<li>經常覺得這樣下去，哪一天醒來不知不覺大家就翻完了……</li>
+			<li class="next">但現狀是殘酷的……</li>
+		</ul>
+	</section>
+
+	<section class="slide black" id="running-into-hole">
+		<div class="citation">
+			<video loop autoplay class="cover w">
+				<source src="pics/running_to_hole.mp4" type="video/mp4">
+				Your browser doesn't support HTML5 video in WebM with VP8
+				or MP4 with H.264. You can still download the
+				<a href="pics/running_to_hole.mp4">screencast</a> and view it locally.
+			</video>
+			<p>Modified from <a href="http://littlewitchacademia.jp/">リトルウィッチアカデミア</a> (Little Witch Academia), 2013</p>
+		</div>
+		<style>
+			#running-into-hole .citation > p {
+				position: absolute;
+				bottom: 1em;
+				right: 1em;
+				color: white;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<h2>翻譯挑戰</h2>
+		<ul>
+			<li>翻譯需要<mark>校對</mark></li>
+			<ul>
+				<li>透過 Transifex review 和 issue 功能</li>
+				<li>檢查語意的正確性</li>
+				<li>檢查 rst 語法（例如：忘了加上 rst 語法、缺少必要的空白）</li>
+			</ul>
+			<li>需要<mark>更多人加入翻譯</mark>！</li>
+			<li>計畫性的翻譯才不會覺得坑很大。未來<mark>只翻譯一部份的文件</mark></li>
+			<li class="next">努力寫論文畢業中……</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<img class="cover h" src="pics/pydoctw_focus.png" alt="">
+	</section>
+
+	<section class="slide">
+		<h2>翻譯文件此坑有多大？</h2>
+	</section>
+
+	<section class="slide">
+		<h2>用錢填坑？</h2>
+	</section>
+
 	<!--
 		timeline
 		people
@@ -517,27 +582,7 @@ msgstr "內容："</code></pre>
 		using pocount from translation-toolkit
 		http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/pocount.html
 	-->
-	<!--
-	<section class="slide black" id="running-into-hole">
-		<div class="citation">
-			<video loop autoplay class="cover w">
-				<source src="pics/running_to_hole.mp4" type="video/mp4">
-				Your browser doesn't support HTML5 video in WebM with VP8
-				or MP4 with H.264. You can still download the
-				<a href="pics/running_to_hole.mp4">screencast</a> and view it locally.
-			</video>
-			<p>Modified from <a href="http://littlewitchacademia.jp/">リトルウィッチアカデミア</a> (Little Witch Academia), 2013</p>
-		</div>
-		<style>
-			#running-into-hole .citation > p {
-				position: absolute;
-				bottom: 1em;
-				right: 1em;
-				color: white;
-			}
-		</style>
-	</section>
-	-->
+
 
 	<!-- End Slide -->
 	<section id='end' class='slide no-number'>
@@ -596,4 +641,3 @@ msgstr "內容："</code></pre>
 	<!--<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
-			</ul>
