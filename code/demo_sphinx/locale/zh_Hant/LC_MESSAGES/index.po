@@ -4,7 +4,6 @@
 # sphinx-intl package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Demo project for sphinx-intl 0.1\n"
@@ -21,35 +20,36 @@ msgstr ""
 
 #: ../../index.rst:7
 msgid "Welcome to Demo project for sphinx-intl's documentation!"
-msgstr ""
+msgstr "歡迎來到 sphinx-intl 示範專案！"
 
 #: ../../index.rst:9
 msgid ""
 "We will use this to demo the usage of `sphinx-intl`_. Make sure you make "
 "installed all the required packages:"
 msgstr ""
+"我們將用本專案來示範 `sphinx-intl`_ 的使用。先確認您已經安裝了所有需要的套件："
 
 #: ../../index.rst:15
 msgid "Then try to write some more pages."
-msgstr ""
+msgstr "接著試著撰寫一些頁面。"
 
 #: ../../index.rst:17
 msgid "Contents:"
-msgstr ""
+msgstr "內容："
 
 #: ../../index.rst:29
 msgid "Indices and tables"
-msgstr ""
+msgstr "索引與表格"
 
 #: ../../index.rst:31
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:32
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:33
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
 

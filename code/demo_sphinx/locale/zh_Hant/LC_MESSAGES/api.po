@@ -4,7 +4,6 @@
 # sphinx-intl package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Demo project for sphinx-intl 0.1\n"
@@ -16,12 +15,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hant\n"
 "Generated-By: Babel 2.3.4\n"
 
 #: ../../api.rst:2
-#, fuzzy
 msgid "GNU ``gettext`` API"
-msgstr "``gettext`` 應用程式介面 (API)"
+msgstr "GNU ``gettext`` API"
 
 #: ../../api.rst:4
 msgid ""
@@ -51,7 +50,7 @@ msgstr ""
 msgid ""
 "If *localedir* is omitted or ``None``, then the current binding for "
 "*domain* is returned. [#]_"
-msgstr ""
+msgstr "如果 *localedir* 被忽略或者為 ``None``，則回傳當前的對 *domain* 領域的綁定。[#]_"
 
 #: ../../api.rst:19
 msgid ""
@@ -59,6 +58,8 @@ msgid ""
 "global domain, language, and locale directory.  This function is usually "
 "aliased as :func:`_` in the local namespace (see examples below)."
 msgstr ""
+"根據現在全域 domain、language 以及 locale 目錄，回傳翻譯後的 *message*。"
+"這個函式在 local namespace 中以別名 :func:`_` 使用（見以下的例子）。"
 
 #: ../../api.rst:23
 msgid "Here's an example of typical usage for this API:"
@@ -121,4 +122,8 @@ msgid ""
 "call :func:`bindtextdomain` with an explicit absolute path at the start "
 "of your application."
 msgstr ""
-
+"預設 locale 目錄根據系統不同而異。例如，在 RedHat Linux 上它是 "
+":file:`/usr/share/locale`，但在 Solaris 上它是 :file:`/usr/lib/locale`。模組 "
+":mod:`gettext` 並不會嘗試支援這些因系統而異的預設路徑；模組預設的路徑為 "
+":file:`sys.prefix/share/locale`。因此，最好在您的應用程式啟動時，呼叫 "
+":func:`bindtextdomain` 並給定一個明確的絕對路徑。"
